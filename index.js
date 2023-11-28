@@ -1,25 +1,38 @@
-let generateEl1 = document.getElementById("generate-el1")
-let generateEl2 = document.getElementById("generate-el2")
-let generateEl3 = document.getElementById("generate-el3")
-let generateEl4 = document.getElementById("generate-el4")
+
+const characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+    "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
+    "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
+    "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+    "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_",
+    "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";", "<", ">",
+    ".", "?",
+    "/"]
 
 
-let keys = ["Abcsdhfhf", "Blfhfksjfhsfh", "Cfhskfhfhf", "Ddskjfhkfhkjfh", "Esjhfksjfhkfh", "Fkfjhskjfhsfh", "Ghfkdshfkjfhh", "Hfhksdhfsjkfhsf", "FxV:ZQT$B/rt5`N?","J;Ms--CKG5N^Gn8{","P]M9?[`.&nmw}'VF","_hhB(j4d/M-AZ9E$","7<RJ4k<m/gSd%-@2"]
-   
 
-  
+let passwordOneEl = document.getElementById('password-one-el')
+let passwordTwoEl = document.getElementById('password-two-el')
+let passwordLengthEl = document.getElementById('password-length-el')
 
 
 
-function generate() {
-    
-    generateEl1.textContent = keys[Math.floor(Math.random() * keys.length)]
-    generateEl2.textContent = keys[Math.floor(Math.random() * keys.length)]
-    generateEl3.textContent = keys[Math.floor(Math.random() * keys.length)]
-    generateEl4.textContent = keys[Math.floor(Math.random() * keys.length)]
-    
-}  
-   
+function getRandomChar() {
+    let randomIndex = Math.floor(Math.random() * characters.length)
+    return characters[randomIndex]
+}
 
+function generator() {
+    let passwordLength = JSON.parse(passwordLengthEl.value)
+    let passwordOne = ''
+    let passwordTwo = ''
+    for (let i = 0; i < passwordLength; i++) {
+        passwordOne += getRandomChar(characters)
+        passwordTwo += getRandomChar(characters)
+    }
+    passwordOneEl.textContent = passwordOne
+    passwordTwoEl.textContent = passwordTwo
+
+}
 
 
